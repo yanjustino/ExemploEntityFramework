@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vacinas.DataModel;
+using Vacinas.DataModel.Contracts;
 
-namespace Vacinas
+namespace Vacinas.DataAccess
 {
-    /// <summary>
-    /// Classe genérica para manipular o banco
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class CRUD<T>: IDisposable where T: class
+    public class CRUD<T>: ICRUD<T> where T: class
     {
-        private BancoDados BD = new BancoDados();
+        private DataContext BD;
+
+        public CRUD()
+        {
+            BD = DataContext.Current;
+        }
 
         public List<T> Listar()
         {

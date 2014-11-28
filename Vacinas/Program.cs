@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using app = System.Windows.Forms;
 
 namespace Vacinas
 {
@@ -14,9 +14,9 @@ namespace Vacinas
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            app.Application.EnableVisualStyles();
+            app.Application.SetCompatibleTextRenderingDefault(false);
+            app.Application.Run(new frmMain());
         }
     }
 }

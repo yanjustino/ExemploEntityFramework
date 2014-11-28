@@ -1,30 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Vacinas.Application;
+using Vacinas.DataModel;
+using Vacinas.DataModel.Contracts;
 
 namespace Vacinas
 {
     public partial class frmListaDoencas : Form
     {
-        CRUD<doenca> crud = new CRUD<doenca>();
+        ICRUD<doenca> crud = ServiceLocator.CrudDoenca;
 
         public frmListaDoencas()
         {
             InitializeComponent();
-            grdDoenca.DataSource = crud.Listar();
         }
 
-        /// <summary>
-        /// Adicionando Doencas
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void lnkAdicionar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             // Chamando formulário
@@ -45,11 +35,6 @@ namespace Vacinas
             grdDoenca.DataSource = crud.Listar();
         }
 
-        /// <summary>
-        /// Alterando Doença
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void lnkAlterar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             // Chamando formulário e passando dados para alteração
@@ -70,11 +55,6 @@ namespace Vacinas
             grdDoenca.DataSource = crud.Listar();
         }
 
-        /// <summary>
-        /// Excluindo Doença
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void lnkExcluir_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             // recuperando id no grid
@@ -85,6 +65,11 @@ namespace Vacinas
             crud.Salvar();
 
             // atualizando grid
+            grdDoenca.DataSource = crud.Listar();
+        }
+
+        private void frmListaDoencas_Load(object sender, EventArgs e)
+        {
             grdDoenca.DataSource = crud.Listar();
         }
     }

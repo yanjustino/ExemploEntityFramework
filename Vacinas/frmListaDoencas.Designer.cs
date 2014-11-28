@@ -28,14 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.grdDoenca = new System.Windows.Forms.DataGridView();
             this.lnkAdicionar = new System.Windows.Forms.LinkLabel();
             this.lnkAlterar = new System.Windows.Forms.LinkLabel();
             this.lnkExcluir = new System.Windows.Forms.LinkLabel();
-            this.doencaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.grdDoenca)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.doencaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // grdDoenca
@@ -83,10 +80,6 @@
             this.lnkExcluir.Text = "Excluir";
             this.lnkExcluir.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkExcluir_LinkClicked);
             // 
-            // doencaBindingSource
-            // 
-            this.doencaBindingSource.DataSource = typeof(Vacinas.doenca);
-            // 
             // frmListaDoencas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -98,8 +91,8 @@
             this.Controls.Add(this.grdDoenca);
             this.Name = "frmListaDoencas";
             this.Text = "frmListaDoencas";
+            this.Load += new System.EventHandler(this.frmListaDoencas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdDoenca)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.doencaBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -107,7 +100,6 @@
 
         #endregion
 
-        private System.Windows.Forms.BindingSource doencaBindingSource;
         private System.Windows.Forms.DataGridView grdDoenca;
         private System.Windows.Forms.LinkLabel lnkAdicionar;
         private System.Windows.Forms.LinkLabel lnkAlterar;

@@ -1,20 +1,19 @@
-namespace Vacinas
+namespace Vacinas.DataModel
 {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("paciente")]
     public partial class paciente
     {
         public paciente()
         {
-            pacientealergia = new HashSet<pacientealergia>();
-            pacientedoenca = new HashSet<pacientedoenca>();
-            pacientepeso = new HashSet<pacientepeso>();
-            pacientevacina = new HashSet<pacientevacina>();
+            pacientealergias = new HashSet<pacientealergia>();
+            pacientedoencas = new HashSet<pacientedoenca>();
+            pacientepesoes = new HashSet<pacientepeso>();
+            pacientevacinas = new HashSet<pacientevacina>();
         }
 
         [Key]
@@ -43,12 +42,12 @@ namespace Vacinas
         [StringLength(20)]
         public string celular { get; set; }
 
-        public virtual ICollection<pacientealergia> pacientealergia { get; set; }
+        public virtual ICollection<pacientealergia> pacientealergias { get; set; }
 
-        public virtual ICollection<pacientedoenca> pacientedoenca { get; set; }
+        public virtual ICollection<pacientedoenca> pacientedoencas { get; set; }
 
-        public virtual ICollection<pacientepeso> pacientepeso { get; set; }
+        public virtual ICollection<pacientepeso> pacientepesoes { get; set; }
 
-        public virtual ICollection<pacientevacina> pacientevacina { get; set; }
+        public virtual ICollection<pacientevacina> pacientevacinas { get; set; }
     }
 }

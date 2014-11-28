@@ -1,18 +1,17 @@
-namespace Vacinas
+namespace Vacinas.DataModel
 {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("principioativo")]
     public partial class principioativo
     {
         public principioativo()
         {
-            alergiamotivo = new HashSet<alergiamotivo>();
-            medicamento = new HashSet<medicamento>();
+            alergiamotivoes = new HashSet<alergiamotivo>();
+            medicamentoes = new HashSet<medicamento>();
         }
 
         [Key]
@@ -22,8 +21,8 @@ namespace Vacinas
         [StringLength(50)]
         public string nomeprincipioativo { get; set; }
 
-        public virtual ICollection<alergiamotivo> alergiamotivo { get; set; }
+        public virtual ICollection<alergiamotivo> alergiamotivoes { get; set; }
 
-        public virtual ICollection<medicamento> medicamento { get; set; }
+        public virtual ICollection<medicamento> medicamentoes { get; set; }
     }
 }

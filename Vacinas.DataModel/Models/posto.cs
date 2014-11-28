@@ -1,17 +1,16 @@
-namespace Vacinas
+namespace Vacinas.DataModel
 {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("posto")]
     public partial class posto
     {
         public posto()
         {
-            pacientevacina = new HashSet<pacientevacina>();
+            pacientevacinas = new HashSet<pacientevacina>();
         }
 
         [Key]
@@ -24,6 +23,6 @@ namespace Vacinas
         [StringLength(7)]
         public string tipoposto { get; set; }
 
-        public virtual ICollection<pacientevacina> pacientevacina { get; set; }
+        public virtual ICollection<pacientevacina> pacientevacinas { get; set; }
     }
 }

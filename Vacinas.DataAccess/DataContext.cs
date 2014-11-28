@@ -1,32 +1,43 @@
-namespace Vacinas
+namespace Vacinas.DataAccess
 {
     using System;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using Vacinas.DataModel;
 
-    public partial class BancoDados : DbContext
+    public partial class DataContext : DbContext
     {
-        public BancoDados()
-            : base("name=BancoDados")
+        private static DataContext _context;
+
+        public DataContext(): base("name=DataContext")
         {
         }
 
-        public virtual DbSet<alergiamotivo> alergiamotivo { get; set; }
-        public virtual DbSet<doenca> doenca { get; set; }
-        public virtual DbSet<elementonatural> elementonatural { get; set; }
-        public virtual DbSet<medicamento> medicamento { get; set; }
-        public virtual DbSet<medico> medico { get; set; }
-        public virtual DbSet<paciente> paciente { get; set; }
-        public virtual DbSet<pacientealergia> pacientealergia { get; set; }
-        public virtual DbSet<pacientedoenca> pacientedoenca { get; set; }
-        public virtual DbSet<pacientepeso> pacientepeso { get; set; }
-        public virtual DbSet<pacientevacina> pacientevacina { get; set; }
-        public virtual DbSet<posologia> posologia { get; set; }
-        public virtual DbSet<posto> posto { get; set; }
-        public virtual DbSet<principioativo> principioativo { get; set; }
-        public virtual DbSet<vacina> vacina { get; set; }
-        public virtual DbSet<vacinacronograma> vacinacronograma { get; set; }
+        public static DataContext Current
+        {
+            get
+            {
+                _context = _context ?? new DataContext();
+                return _context;
+            }
+        }
+
+        public virtual DbSet<alergiamotivo> alergiamotivoes { get; set; }
+        public virtual DbSet<doenca> doencas { get; set; }
+        public virtual DbSet<elementonatural> elementonaturals { get; set; }
+        public virtual DbSet<medicamento> medicamentoes { get; set; }
+        public virtual DbSet<medico> medicos { get; set; }
+        public virtual DbSet<paciente> pacientes { get; set; }
+        public virtual DbSet<pacientealergia> pacientealergias { get; set; }
+        public virtual DbSet<pacientedoenca> pacientedoencas { get; set; }
+        public virtual DbSet<pacientepeso> pacientepesoes { get; set; }
+        public virtual DbSet<pacientevacina> pacientevacinas { get; set; }
+        public virtual DbSet<posologia> posologias { get; set; }
+        public virtual DbSet<posto> postoes { get; set; }
+        public virtual DbSet<principioativo> principioativoes { get; set; }
+        public virtual DbSet<vacina> vacinas { get; set; }
+        public virtual DbSet<vacinacronograma> vacinacronogramas { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -35,13 +46,13 @@ namespace Vacinas
                 .IsUnicode(false);
 
             modelBuilder.Entity<doenca>()
-                .HasMany(e => e.pacientedoenca)
+                .HasMany(e => e.pacientedoencas)
                 .WithRequired(e => e.doenca)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<doenca>()
-                .HasMany(e => e.vacina)
-                .WithMany(e => e.doenca)
+                .HasMany(e => e.vacinas)
+                .WithMany(e => e.doencas)
                 .Map(m => m.ToTable("vacinadoenca").MapLeftKey("iddoenca").MapRightKey("idvacina"));
 
             modelBuilder.Entity<elementonatural>()
@@ -53,14 +64,14 @@ namespace Vacinas
                 .IsUnicode(false);
 
             modelBuilder.Entity<medicamento>()
-                .HasMany(e => e.posologia)
+                .HasMany(e => e.posologias)
                 .WithRequired(e => e.medicamento)
                 .HasForeignKey(e => e.idmedico)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<medicamento>()
-                .HasMany(e => e.principioativo)
-                .WithMany(e => e.medicamento)
+                .HasMany(e => e.principioativoes)
+                .WithMany(e => e.medicamentoes)
                 .Map(m => m.ToTable("medicamentocomposicao").MapLeftKey("idmedicamento").MapRightKey("idprincipioativo"));
 
             modelBuilder.Entity<medico>()
@@ -68,7 +79,7 @@ namespace Vacinas
                 .IsUnicode(false);
 
             modelBuilder.Entity<medico>()
-                .HasMany(e => e.posologia)
+                .HasMany(e => e.posologias)
                 .WithRequired(e => e.medico)
                 .WillCascadeOnDelete(false);
 
@@ -99,7 +110,7 @@ namespace Vacinas
                 .IsUnicode(false);
 
             modelBuilder.Entity<paciente>()
-                .HasMany(e => e.pacientevacina)
+                .HasMany(e => e.pacientevacinas)
                 .WithRequired(e => e.paciente)
                 .WillCascadeOnDelete(false);
 
@@ -129,7 +140,7 @@ namespace Vacinas
                 .IsUnicode(false);
 
             modelBuilder.Entity<posto>()
-                .HasMany(e => e.pacientevacina)
+                .HasMany(e => e.pacientevacinas)
                 .WithRequired(e => e.posto)
                 .WillCascadeOnDelete(false);
 
@@ -142,7 +153,7 @@ namespace Vacinas
                 .IsUnicode(false);
 
             modelBuilder.Entity<vacina>()
-                .HasMany(e => e.pacientevacina)
+                .HasMany(e => e.pacientevacinas)
                 .WithRequired(e => e.vacina)
                 .WillCascadeOnDelete(false);
 
