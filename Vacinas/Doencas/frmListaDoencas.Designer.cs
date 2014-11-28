@@ -91,7 +91,6 @@
             this.Controls.Add(this.grdDoenca);
             this.Name = "frmListaDoencas";
             this.Text = "frmListaDoencas";
-            this.Load += new System.EventHandler(this.frmListaDoencas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdDoenca)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

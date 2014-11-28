@@ -54,16 +54,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmCadastroDoenca.cs">
+    <Compile Include="Doencas\formListaDoencas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCadastroDoenca.Designer.cs">
-      <DependentUpon>frmCadastroDoenca.cs</DependentUpon>
+    <Compile Include="Doencas\formListaDoencas.Designer.cs">
+      <DependentUpon>formListaDoencas.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmListaDoencas.cs">
+    <Compile Include="frmNome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmListaDoencas.Designer.cs">
+    <Compile Include="frmNome.Designer.cs">
+      <DependentUpon>frmNome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Doencas\frmListaDoencas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doencas\frmListaDoencas.Designer.cs">
       <DependentUpon>frmListaDoencas.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
@@ -74,13 +80,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Doencas\formListaDoencas.resx">
+      <DependentUpon>formListaDoencas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCadastroDoenca.resx">
-      <DependentUpon>frmCadastroDoenca.cs</DependentUpon>
+    <EmbeddedResource Include="frmNome.resx">
+      <DependentUpon>frmNome.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmListaDoencas.resx">
+    <EmbeddedResource Include="Doencas\frmListaDoencas.resx">
       <DependentUpon>frmListaDoencas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
