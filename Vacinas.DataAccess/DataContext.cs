@@ -10,10 +10,6 @@ namespace Vacinas.DataAccess
     {
         private static DataContext _context;
 
-        public DataContext(): base("name=DataContext")
-        {
-        }
-
         public static DataContext Current
         {
             get

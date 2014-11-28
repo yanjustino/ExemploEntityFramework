@@ -8,7 +8,7 @@ using Vacinas.DataModel.Contracts;
 
 namespace Vacinas.DataAccess
 {
-    public class CRUD<T>: ICRUD<T> where T: class
+    public class CRUD<T> : ICRUD<T> where T : class
     {
         private DataContext BD;
 
